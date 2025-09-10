@@ -1,0 +1,80 @@
+@if (!doesPlayerExist) {
+  <div class="nickname-container">
+    <h1 class="title">Enter your nickname</h1>
+    <input class="nickname-input" type="text" [(ngModel)]="playerName" placeholder="Enter your nickname...">
+    <button class="primary-button" (click)="joinQuiz()">Join Quiz</button>
+  </div>
+} @else {
+  @if (!showModal) {
+    <div class="lobby-container">
+      <h2 class="title">Welcome, {{ playerName }}!</h2>
+      <p>Waiting in the lobby...</p>
+
+      <ul class="player-list">
+        @for (player of players; track player) {
+          <li class="player-item">
+            {{ player.name }}
+
+            @if (playerName === player.name && !player.isReady) {
+              <button class="ready-btn" (click)="togglePlayerReady()">Ready</button>
+            } @else if (playerName === player.name && player.isReady) {
+              <button class="not-ready-btn" (click)="togglePlayerReady()">Not Ready</button>
+            }
+
+            @if (player.isReady) {
+              <span class="ready-badge">Ready</span>
+            } @else {
+              <span class="not-ready-badge">Not Ready</span>
+            }
+
+            @if (player.isHost) {
+              <span class="host-badge">👑Host</span>
+            }
+
+            @if (isHost === playerName && playerName !== player.name) {
+              <button class="kick-player-btn" (click)="kickPlayer(player)">Kick Player</button>
+            }
+          </li>
+        }
+      </ul>
+
+      @if (isHost === playerName) {
+        <button (click)="startQuiz()" class="primary-button"
+        [ngStyle]="{
+        backgroundColor: !isAllPlayersReady ? 'red' : 'green'
+        }"
+        [disabled]="!isAllPlayersReady">Start Quiz!</button>
+      }
+    </div>
+    <div class="chat-container">
+      <div class="chat-messages">
+        @for (message of messages; track message) {
+          <div class="message">
+            <strong>{{ message.sender }}:</strong> {{ message.text }}
+          </div>
+        }
+      </div>
+      <div class="chat-input">
+        <input [(ngModel)]="messageText" placeholder="Type your message..." />
+        <button (click)="sendMessage()">Send</button>
+      </div>
+    </div>
+  }
+}
+
+@if (showModal) {
+  <div class="modal-overlay">
+    <div class="modal">
+      <h2 class="modal-title">Error</h2>
+      <p class="modal-message">{{ showModalMessage }}</p>
+      <button class="modal-button" (click)="closeModal()">OK</button>
+    </div>
+  </div>
+}
+
+@if (countdown!==null) {
+  <div class="countdown">
+    <h2>Quiz starting in {{countdown}} seconds</h2>
+  </div>
+}
+

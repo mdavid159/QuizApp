@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Welcome to QuizMe</h1>
+  <div class="card">
+    <input type="text" [(ngModel)]="uuid" placeholder="Input quiz code...">
+    <input type="text" [(ngModel)]="password" placeholder="Input quiz password...">
+    <button (click)="joinQuiz()" class="join-quiz-btn">Join Quiz</button>
+    <h1>Or</h1>
+    <button (click)="createQuiz()" class="create-quiz-btn">Create Quiz</button>
+  </div>
+</div>

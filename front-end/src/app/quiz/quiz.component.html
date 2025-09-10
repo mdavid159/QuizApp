@@ -1,0 +1,11 @@
+@if (questions && questions.length > 0) {
+  @for (question of questions; track question.id; let i = $index) {
+    <h1>
+      {{question.text}}
+    </h1>
+    @for (answer of questions[i].answers; track answer) {
+      <button (click)="selectAnswer(answer, i)">{{answer}}</button>
+    }
+  }
+  <button (click)="submitAnswer()">Submit answer</button>
+}

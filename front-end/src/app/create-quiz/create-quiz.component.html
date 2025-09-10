@@ -1,0 +1,53 @@
+@if (!successShowModal){
+  <div class="container">
+  <h1>Create Quiz</h1>
+  <input type="text" [(ngModel)]="quizPasscode" placeholder="Create a passcode for the Quiz">
+  <div class="question-container">
+    <h1>Create question(s)</h1>
+    <input type="text" [(ngModel)]="currentQuestion" placeholder="Enter a question">
+    <input type="text" [(ngModel)]="currentAnswers[0]" placeholder="First answer">
+    <input type="text" [(ngModel)]="currentAnswers[1]" placeholder="Second answer">
+    <input type="text" [(ngModel)]="currentAnswers[2]" placeholder="Third answer">
+    <input type="text" [(ngModel)]="currentAnswers[3]" placeholder="Fourth answer">
+    <input type="text" [(ngModel)]="correctAnswer" placeholder="Right answer">
+    <button class="add-question-btn" (click)="addQuestion()">Add question</button>
+  </div>
+  <button class="create-game-btn" (click)="createQuiz()">Create quiz!</button>
+  </div>
+  <div class="submitted-questions">
+    @for (question of questions; track question.id; let i = $index) {
+      <div class="question-preview">
+        <h3>Question {{ i + 1 }}: {{ question.question }}</h3>
+        <ul>
+          @for (answer of question.answers; track answer) {
+            <li [ngStyle]="{
+          color: answer === question.correctAnswer ? 'green' : 'black',
+          fontWeight: answer === question.correctAnswer ? 'bold' : 'normal'
+          }">
+              {{ answer }}
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>>
+}
+@if (successShowModal) {
+  <div class="modal">
+    <div class="modal-content">
+      <h2>Quiz Created Successfully!</h2>
+      <p>Your Quiz ID is:</p>
+      <pre>{{ createdQuizUuid }}</pre>
+      <button (click)="copyQuizId()">Copy Quiz ID</button>
+      <p>Your Quiz Password is:</p>
+      <pre>{{ quizPasscode }}</pre>
+      <p>Your Quiz link is:</p>
+      <a [href]="'http://localhost:4200/quiz/' + createdQuizUuid" target="_blank">
+        http://localhost:4200/quiz/{{ createdQuizUuid }}
+      </a>
+      <button (click)="copyQuizUrl()">Copy Quiz Url</button>
+      <button (click)="startQuiz(createdQuizUuid)">Start Quiz!</button>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+}

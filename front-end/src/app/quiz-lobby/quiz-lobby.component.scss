@@ -1,0 +1,226 @@
+/* General styles */
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
+}
+
+.primary-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.primary-button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Nickname container */
+.nickname-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  gap: 1rem;
+}
+
+.nickname-input {
+  padding: 0.75rem;
+  width: 250px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Lobby container */
+.lobby-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.player-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 2rem;
+}
+
+.player-item {
+  background: #f0f0f0;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Buttons inside player-item */
+.ready-btn,
+.not-ready-btn,
+.kick-player-btn {
+  margin-left: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ready-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.not-ready-btn {
+  background-color: #ff0000;
+  color: white;
+}
+
+.kick-player-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Badges */
+.ready-badge {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.not-ready-badge {
+  background-color: #f44336;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.host-badge {
+  background-color: #ffc107;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* Chat container */
+.chat-container {
+  margin: 2rem auto 0 auto; /* Top margin, then auto left and right */
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+}
+
+.chat-messages {
+  min-height: 100px;
+  max-height: 100px;
+  overflow-y: auto; /* Enables vertical scrolling when the content exceeds the height */
+  padding: 10px;
+  border-bottom: 2px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.message {
+  margin-bottom: 0.8rem;
+  word-wrap: break-word;
+}
+
+.chat-input {
+  display: flex;
+  padding: 1rem;
+  gap: 0.5rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.chat-input button {
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-message {
+  margin-bottom: 1.5rem;
+}
+
+.modal-button {
+  padding: 0.7rem 1.5rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Countdown */
+.countdown {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffc107;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
